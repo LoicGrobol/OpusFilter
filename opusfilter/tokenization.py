@@ -179,7 +179,7 @@ def get_tokenize(specs):
     if tokenizer == 'moses':
         return MosesTokenizer(lang, **options)
     if tokenizer == 'regex':
-        return RegexTokenizer(**options)
+        return RegexTokenizer(lang, **options)
     if tokenizer == 'jieba':
         return JiebaTokenizer(lang, **options)
     if tokenizer == 'mecab':
