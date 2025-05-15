@@ -32,6 +32,10 @@ class TestTokenization(unittest.TestCase):
         tokenize = tokenization.get_tokenize(('moses', 'en'))
         self.assertEqual(tokenize("Hello, world!"), "Hello , world !")
 
+    def test_regex(self):
+        tokenize = tokenization.get_tokenize(('regex', 'en'))
+        self.assertEqual(tokenize("Hello, world!"), "Hello , world !")
+
     def test_moses_fallback(self):
         with self.assertLogs() as captured:
             tokenize = tokenization.get_tokenize(('moses', 'xx'))
