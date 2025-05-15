@@ -11,7 +11,7 @@ install_requires = [
     "py3langid>=0.2.2",
     "matplotlib",
     "morfessor",
-    "opus-fast-mosestokenizer>=0.0.8.5",
+    # "opus-fast-mosestokenizer>=0.0.8.5",
     "pandas>=1.0.0",
     "xxhash>=3.2.0",
     "sentence-splitter",
