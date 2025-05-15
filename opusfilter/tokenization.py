@@ -29,7 +29,7 @@ class DummyTokenizer:
 class RegexTokenizer:
     """Tokenize with a regex à la nltk"""
 
-     def __init__(self, lang, map_space_to='␣', **options):
+    def __init__(self, lang, map_space_to='␣', **options):
         self.map_space_to = map_space_to
         self.options = options
     
