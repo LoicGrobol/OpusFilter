@@ -35,7 +35,7 @@ class RegexTokenizer:
     
     def tokenize(self, string):
         """Return tokenized version of the input string"""
-        return re.findall(r"\w+|[\d\.]+|\S", string)
+        return " ".join(re.findall(r"\w+|[\d\.]+|\S", string))
 
     def detokenize(self, string):
         output = ''.join(string.split())
