@@ -1,6 +1,7 @@
 """Tokenization tools"""
 
 import logging
+import re
 
 from . import ConfigurationError
 
@@ -20,6 +21,27 @@ class DummyTokenizer:
     def detokenize(string):
         """Return detokenized version of the input string"""
         return string
+
+    def __call__(self, string):
+        """Return tokenized version of the input string"""
+        return self.tokenize(string)
+
+class RegexTokenizer:
+    """Tokenize with a regex à la nltk"""
+
+     def __init__(self, lang, map_space_to='␣', **options):
+        self.map_space_to = map_space_to
+        self.options = options
+    
+    def tokenize(self, string):
+        """Return tokenized version of the input string"""
+        return re.findall(r"\w+|[\d\.]+|\S", string)
+
+    def detokenize(self, string):
+        output = ''.join(string.split())
+        if self.map_space_to:
+            output = output.replace(self.map_space_to, ' ')
+        return output
 
     def __call__(self, string):
         """Return tokenized version of the input string"""
@@ -156,6 +178,8 @@ def get_tokenize(specs):
         options = {}
     if tokenizer == 'moses':
         return MosesTokenizer(lang, **options)
+    if tokenizer == 'regex':
+        return RegexTokenizer(**options)
     if tokenizer == 'jieba':
         return JiebaTokenizer(lang, **options)
     if tokenizer == 'mecab':
