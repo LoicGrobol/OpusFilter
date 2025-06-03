@@ -19,6 +19,7 @@ install_requires = [
     "ruamel.yaml>=0.15.0",
     "regex",
     "requests",
+    "sacremoses",
     "scikit-learn",
     "subword_nmt",
     "tqdm",
